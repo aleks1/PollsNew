@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" CodeBehind="Site.master.cs" Inherits="pollsNew.Site" %>
+<%@ Register TagName="Back" TagPrefix="polls" Src="~/WebControls/BackLink.ascx" %>
+<%@ Register TagName="UserInfo" TagPrefix="polls" Src="~/WebControls/UserInfo.ascx" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Polls</title>
+    <link href="~/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="header">        
+        <h1 class="DDMainHeader">
+        <a href="/">Polls</a></h1>
+        <polls:UserInfo runat="server" />
+    </div>
+    <polls:Back runat="server" />
+    <div>
+        <%-- TODO: Enable partial rendering by setting the EnablePartialRendering attribute to "true" to provide a smoother browsing experience.
+             Leaving partial rendering disabled will provide a better debugging experience while the application is in development. --%>
+
+        <asp:ScriptManager runat="server" EnablePartialRendering="false" />
+
+        
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pollsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="table">
+    <Key>
+      <PropertyRef Name="tableId" />
+    </Key>
+    <Property Name="tableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tablename" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="objectsRElations" Relationship="pollsModel.FK__objectsRE__table__398D8EEE" FromRole="table" ToRole="objectsRElation" />
+    <NavigationProperty Name="tableObjects" Relationship="pollsModel.FK__tableObje__table__440B1D61" FromRole="table" ToRole="tableObject" />
+    <NavigationProperty Name="tableObjectPairs" Relationship="pollsModel.FK__tableObje__table__46E78A0C" FromRole="table" ToRole="tableObjectPair" />
+    <NavigationProperty Name="attributes" Relationship="pollsModel.FK__attribute__table__5812160E" FromRole="table" ToRole="attribute" />
+    <NavigationProperty Name="polls" Relationship="pollsModel.FK__polls__tableId__5EBF139D" FromRole="table" ToRole="poll" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="passwordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tableObjectPairs" Relationship="pollsModel.FK__tableObje__userI__59063A47" FromRole="user" ToRole="tableObjectPair" />
+    <NavigationProperty Name="polls" Relationship="pollsModel.FK__polls__userId__5BE2A6F2" FromRole="user" ToRole="poll" />
+  </EntityType>
+  <EntityContainer Name="pollsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tables" EntityType="Self.table" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="objectsRElations" EntityType="pollsModel.objectsRElation" />
+    <AssociationSet Name="FK__objectsRE__table__398D8EEE" Association="pollsModel.FK__objectsRE__table__398D8EEE">
+      <End Role="table" EntitySet="tables" />
+      <End Role="objectsRElation" EntitySet="objectsRElations" />
+    </AssociationSet>
+    <EntitySet Name="tableObjects" EntityType="pollsModel.tableObject" />
+    <EntitySet Name="tableObjectPairs" EntityType="pollsModel.tableObjectPair" />
+    <AssociationSet Name="FK__tableObje__table__440B1D61" Association="pollsModel.FK__tableObje__table__440B1D61">
+      <End Role="table" EntitySet="tables" />
+      <End Role="tableObject" EntitySet="tableObjects" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tableObje__table__46E78A0C" Association="pollsModel.FK__tableObje__table__46E78A0C">
+      <End Role="table" EntitySet="tables" />
+      <End Role="tableObjectPair" EntitySet="tableObjectPairs" />
+    </AssociationSet>
+    <EntitySet Name="attributes" EntityType="pollsModel.attribute" />
+    <AssociationSet Name="FK__attribute__table__5812160E" Association="pollsModel.FK__attribute__table__5812160E">
+      <End Role="table" EntitySet="tables" />
+      <End Role="attribute" EntitySet="attributes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tableObje__userI__59063A47" Association="pollsModel.FK__tableObje__userI__59063A47">
+      <End Role="user" EntitySet="users" />
+      <End Role="tableObjectPair" EntitySet="tableObjectPairs" />
+    </AssociationSet>
+    <EntitySet Name="polls" EntityType="pollsModel.poll" />
+    <AssociationSet Name="FK__polls__attribute__5DCAEF64" Association="pollsModel.FK__polls__attribute__5DCAEF64">
+      <End Role="attribute" EntitySet="attributes" />
+      <End Role="poll" EntitySet="polls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__polls__objectId__5CD6CB2B" Association="pollsModel.FK__polls__objectId__5CD6CB2B">
+      <End Role="tableObject" EntitySet="tableObjects" />
+      <End Role="poll" EntitySet="polls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__polls__pairId__5FB337D6" Association="pollsModel.FK__polls__pairId__5FB337D6">
+      <End Role="tableObjectPair" EntitySet="tableObjectPairs" />
+      <End Role="poll" EntitySet="polls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__polls__tableId__5EBF139D" Association="pollsModel.FK__polls__tableId__5EBF139D">
+      <End Role="table" EntitySet="tables" />
+      <End Role="poll" EntitySet="polls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__polls__userId__5BE2A6F2" Association="pollsModel.FK__polls__userId__5BE2A6F2">
+      <End Role="user" EntitySet="users" />
+      <End Role="poll" EntitySet="polls" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="objectsRElation">
+    <Key>
+      <PropertyRef Name="pairId" />
+    </Key>
+    <Property Name="pairId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="tableId" Type="Int32" Nullable="false" />
+    <Property Name="pairDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="table" Relationship="pollsModel.FK__objectsRE__table__398D8EEE" FromRole="objectsRElation" ToRole="table" />
+  </EntityType>
+  <Association Name="FK__objectsRE__table__398D8EEE">
+    <End Type="pollsModel.table" Role="table" Multiplicity="1" />
+    <End Type="pollsModel.objectsRElation" Role="objectsRElation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table">
+        <PropertyRef Name="tableId" />
+      </Principal>
+      <Dependent Role="objectsRElation">
+        <PropertyRef Name="tableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tableObject">
+    <Key>
+      <PropertyRef Name="objectId" />
+    </Key>
+    <Property Name="objectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="objectName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="tableId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="table" Relationship="pollsModel.FK__tableObje__table__440B1D61" FromRole="tableObject" ToRole="table" />
+    <NavigationProperty Name="polls" Relationship="pollsModel.FK__polls__objectId__5CD6CB2B" FromRole="tableObject" ToRole="poll" />
+  </EntityType>
+  <EntityType Name="tableObjectPair">
+    <Key>
+      <PropertyRef Name="pairId" />
+    </Key>
+    <Property Name="pairId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tableId" Type="Int32" Nullable="false" />
+    <Property Name="object1Id" Type="Int32" Nullable="false" />
+    <Property Name="object2Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="table" Relationship="pollsModel.FK__tableObje__table__46E78A0C" FromRole="tableObjectPair" ToRole="table" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="pollsModel.FK__tableObje__userI__59063A47" FromRole="tableObjectPair" ToRole="user" />
+    <NavigationProperty Name="polls" Relationship="pollsModel.FK__polls__pairId__5FB337D6" FromRole="tableObjectPair" ToRole="poll" />
+    <Property Name="IsVoted" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__tableObje__table__440B1D61">
+    <End Type="pollsModel.table" Role="table" Multiplicity="1" />
+    <End Type="pollsModel.tableObject" Role="tableObject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table">
+        <PropertyRef Name="tableId" />
+      </Principal>
+      <Dependent Role="tableObject">
+        <PropertyRef Name="tableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tableObje__table__46E78A0C">
+    <End Type="pollsModel.table" Role="table" Multiplicity="1" />
+    <End Type="pollsModel.tableObjectPair" Role="tableObjectPair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table">
+        <PropertyRef Name="tableId" />
+      </Principal>
+      <Dependent Role="tableObjectPair">
+        <PropertyRef Name="tableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="attribute">
+    <Key>
+      <PropertyRef Name="attributeId" />
+    </Key>
+    <Property Name="attributeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="attributeWeight" Type="Int32" Nullable="false" />
+    <Property Name="attributeName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="tableId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="table" Relationship="pollsModel.FK__attribute__table__5812160E" FromRole="attribute" ToRole="table" />
+    <NavigationProperty Name="polls" Relationship="pollsModel.FK__polls__attribute__5DCAEF64" FromRole="attribute" ToRole="poll" />
+  </EntityType>
+  <Association Name="FK__attribute__table__5812160E">
+    <End Type="pollsModel.table" Role="table" Multiplicity="1" />
+    <End Type="pollsModel.attribute" Role="attribute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table">
+        <PropertyRef Name="tableId" />
+      </Principal>
+      <Dependent Role="attribute">
+        <PropertyRef Name="tableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tableObje__userI__59063A47">
+    <End Type="pollsModel.user" Role="user" Multiplicity="1" />
+    <End Type="pollsModel.tableObjectPair" Role="tableObjectPair" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tableObjectPair">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="poll">
+    <Key>
+      <PropertyRef Name="pollId" />
+    </Key>
+    <Property Name="pollId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="objectId" Type="Int32" Nullable="false" />
+    <Property Name="dateofpoll" Type="DateTime" Precision="3" />
+    <Property Name="points" Type="Int32" />
+    <Property Name="isCurrent" Type="Int32" />
+    <Property Name="attributeId" Type="Int32" Nullable="false" />
+    <Property Name="tableId" Type="Int32" Nullable="false" />
+    <Property Name="pairId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="attribute" Relationship="pollsModel.FK__polls__attribute__5DCAEF64" FromRole="poll" ToRole="attribute" />
+    <NavigationProperty Name="tableObject" Relationship="pollsModel.FK__polls__objectId__5CD6CB2B" FromRole="poll" ToRole="tableObject" />
+    <NavigationProperty Name="tableObjectPair" Relationship="pollsModel.FK__polls__pairId__5FB337D6" FromRole="poll" ToRole="tableObjectPair" />
+    <NavigationProperty Name="table" Relationship="pollsModel.FK__polls__tableId__5EBF139D" FromRole="poll" ToRole="table" />
+    <NavigationProperty Name="user" Relationship="pollsModel.FK__polls__userId__5BE2A6F2" FromRole="poll" ToRole="user" />
+  </EntityType>
+  <Association Name="FK__polls__attribute__5DCAEF64">
+    <End Type="pollsModel.attribute" Role="attribute" Multiplicity="1" />
+    <End Type="pollsModel.poll" Role="poll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="attribute">
+        <PropertyRef Name="attributeId" />
+      </Principal>
+      <Dependent Role="poll">
+        <PropertyRef Name="attributeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__polls__objectId__5CD6CB2B">
+    <End Type="pollsModel.tableObject" Role="tableObject" Multiplicity="1" />
+    <End Type="pollsModel.poll" Role="poll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tableObject">
+        <PropertyRef Name="objectId" />
+      </Principal>
+      <Dependent Role="poll">
+        <PropertyRef Name="objectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__polls__pairId__5FB337D6">
+    <End Type="pollsModel.tableObjectPair" Role="tableObjectPair" Multiplicity="1" />
+    <End Type="pollsModel.poll" Role="poll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tableObjectPair">
+        <PropertyRef Name="pairId" />
+      </Principal>
+      <Dependent Role="poll">
+        <PropertyRef Name="pairId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__polls__tableId__5EBF139D">
+    <End Type="pollsModel.table" Role="table" Multiplicity="1" />
+    <End Type="pollsModel.poll" Role="poll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="table">
+        <PropertyRef Name="tableId" />
+      </Principal>
+      <Dependent Role="poll">
+        <PropertyRef Name="tableId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__polls__userId__5BE2A6F2">
+    <End Type="pollsModel.user" Role="user" Multiplicity="1" />
+    <End Type="pollsModel.poll" Role="poll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="poll">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pollsModelStoreContainer" CdmEntityContainer="pollsEntities">
+    <EntitySetMapping Name="tables">
+      <EntityTypeMapping TypeName="pollsModel.table">
+        <MappingFragment StoreEntitySet="tables">
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="tablename" ColumnName="tablename" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="pollsModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="passwordHash" ColumnName="passwordHash" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="objectsRElations">
+      <EntityTypeMapping TypeName="pollsModel.objectsRElation">
+        <MappingFragment StoreEntitySet="objectsRElation">
+          <ScalarProperty Name="pairDate" ColumnName="pairDate" />
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="pairId" ColumnName="pairId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableObjects">
+      <EntityTypeMapping TypeName="pollsModel.tableObject">
+        <MappingFragment StoreEntitySet="tableObject">
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="objectName" ColumnName="objectName" />
+          <ScalarProperty Name="objectId" ColumnName="objectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableObjectPairs">
+      <EntityTypeMapping TypeName="pollsModel.tableObjectPair">
+        <MappingFragment StoreEntitySet="tableObjectPair">
+          <ScalarProperty Name="IsVoted" ColumnName="IsVoted" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="object2Id" ColumnName="object2Id" />
+          <ScalarProperty Name="object1Id" ColumnName="object1Id" />
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="pairId" ColumnName="pairId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="attributes">
+      <EntityTypeMapping TypeName="pollsModel.attribute">
+        <MappingFragment StoreEntitySet="attribute">
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="attributeName" ColumnName="attributeName" />
+          <ScalarProperty Name="attributeWeight" ColumnName="attributeWeight" />
+          <ScalarProperty Name="attributeId" ColumnName="attributeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="polls">
+      <EntityTypeMapping TypeName="pollsModel.poll">
+        <MappingFragment StoreEntitySet="polls">
+          <ScalarProperty Name="pairId" ColumnName="pairId" />
+          <ScalarProperty Name="tableId" ColumnName="tableId" />
+          <ScalarProperty Name="attributeId" ColumnName="attributeId" />
+          <ScalarProperty Name="isCurrent" ColumnName="isCurrent" />
+          <ScalarProperty Name="points" ColumnName="points" />
+          <ScalarProperty Name="dateofpoll" ColumnName="dateofpoll" />
+          <ScalarProperty Name="objectId" ColumnName="objectId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="pollId" ColumnName="pollId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

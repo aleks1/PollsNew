@@ -1,0 +1,26 @@
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\bin\pollsNew.dll.config
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\bin\pollsNew.dll
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\bin\pollsNew.pdb
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\bin\EntityFramework.dll
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\bin\EntityFramework.SqlServer.dll
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\bin\Microsoft.AspNet.DynamicData.EFProvider.dll
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\bin\Microsoft.AspNet.EntityDataSource.dll
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\bin\EntityFramework.xml
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\bin\EntityFramework.SqlServer.xml
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\obj\Debug\pollsNew.dll
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\obj\Debug\pollsNew.pdb
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\obj\Debug\pollsNew.csprojResolveAssemblyReference.cache
+C:\Users\Алексей\Documents\Visual Studio 2013\Projects\pollsNew\pollsNew\obj\Debug\pollsNew.dll.licenses
+F:\pollsNew\pollsNew\bin\pollsNew.dll.config
+F:\pollsNew\pollsNew\bin\pollsNew.dll
+F:\pollsNew\pollsNew\bin\pollsNew.pdb
+F:\pollsNew\pollsNew\bin\EntityFramework.dll
+F:\pollsNew\pollsNew\bin\EntityFramework.SqlServer.dll
+F:\pollsNew\pollsNew\bin\Microsoft.AspNet.DynamicData.EFProvider.dll
+F:\pollsNew\pollsNew\bin\Microsoft.AspNet.EntityDataSource.dll
+F:\pollsNew\pollsNew\bin\EntityFramework.xml
+F:\pollsNew\pollsNew\bin\EntityFramework.SqlServer.xml
+F:\pollsNew\pollsNew\obj\Debug\pollsNew.csprojResolveAssemblyReference.cache
+F:\pollsNew\pollsNew\obj\Debug\pollsNew.dll.licenses
+F:\pollsNew\pollsNew\obj\Debug\pollsNew.dll
+F:\pollsNew\pollsNew\obj\Debug\pollsNew.pdb
